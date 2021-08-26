@@ -1,0 +1,6 @@
+name: Commands_Time_Restrictions
+version: @version@
+main: me.akkokiko.commands_time_restrictions.Main
+api-version: 1.16
+authors: [ Akkokiko ]
+description: It allows some commends to be used only in a specified period of time.

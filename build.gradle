@@ -1,0 +1,44 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'java'
+}
+
+group = 'me.Akkokiko'
+version = '1.0-SNAPSHOT'
+
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    maven { url = "https://repo.aikar.co/content/groups/aikar/" }
+    maven { url = "https://hub.spigotmc.org/nexus/content/groups/public/" }
+}
+
+compileJava {
+    options.compilerArgs += ["-parameters"]
+    options.fork = true
+    options.forkOptions.executable = 'javac'
+}
+
+dependencies {
+    compileOnly "org.spigotmc:spigot-api:1.15.2-R0.1-SNAPSHOT"
+    compile "co.aikar:acf-paper:0.5.0-SNAPSHOT"
+}
+
+shadowJar {
+    relocate 'co.aikar.commands', ' me.akkokiko.commands_time_restrictions.acf'
+    relocate 'co.aikar.locales', 'me.akkokiko.commands_time_restrictions.locales'
+}
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        filter ReplaceTokens, tokens: [version: version]
+    }
+}
+
+
+build.dependsOn shadowJar
