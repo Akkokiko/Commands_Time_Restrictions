@@ -1,0 +1,30 @@
+_extends: .github
+tag-template: v$NEXT_MINOR_VERSION
+name-template: $NEXT_MINOR_VERSION
+template: |
+  ## What’s Changed
+  $CHANGES
+categories:
+  - title: 🚨 Removed
+    label: removed
+  - title: 🚀 New features
+    label: feature
+  - title: 🐛 Bug fixes
+    label: bug
+  - title: 📝 Documentation updates
+    label: documentation
+  - title: 📦 Dependency updates
+    label: dependencies
+    
+exclude-labels:
+  - question
+  - duplicate
+  - wontfix
+
+autolabeler:
+  - label: 'bug'
+    branch:
+      - '/fix\/.+/'
+  - label: 'feature'
+    branch:
+      - '/feature\/.+/'
