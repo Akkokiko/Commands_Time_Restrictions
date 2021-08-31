@@ -66,4 +66,4 @@ jobs:
         with:
           name: Commands_Time_Restrictions-${{ env.CURRENT_VERSION }}-${{env.VERSION}}
           path: build/libs/Commands_Time_Restrictions-*-all.jar
-          if-no-files-found: erro
+          if-no-files-found: warn
